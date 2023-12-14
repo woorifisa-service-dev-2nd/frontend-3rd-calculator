@@ -23,6 +23,9 @@ const reducer = (data, action) => {
 
     case "AC":
       return "";
+
+    case "HISTORY":
+        return action.data;
   }
 };
 

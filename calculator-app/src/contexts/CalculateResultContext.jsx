@@ -14,6 +14,8 @@ const reducer = (data, action) => {
       return "";
     case "RESULT":
       return evaluateExpression(action.expression);
+    case "HISTORY":
+      return action.result;
   }
 };
 
