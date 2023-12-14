@@ -1,18 +1,23 @@
-import React from 'react'
-import { useCalculateDispatch } from '../../contexts/CalculateContext'
+import React from "react";
+import { useCalculateDispatch } from "../../contexts/CalculateContext";
+import { useCalculateResultDispatch } from "../../contexts/CalculateResultContext";
 
-const InputActionButton = ({children, action}) => {
+const InputActionButton = ({ children, action }) => {
   const dispatch = useCalculateDispatch();
-  
+  const resultDispatch = useCalculateResultDispatch();
+
   const buttonHandler = () => {
-    dispatch(action)
-  }
-  
+    dispatch(action);
+    if (action.type === "AC") {
+      resultDispatch(action);
+    }
+  };
+
   return (
     <button className="bg-blue-200 hover:bg-blue-300" onClick={buttonHandler}>
       {children}
     </button>
-  )
-}
+  );
+};
 
-export default InputActionButton
+export default InputActionButton;
