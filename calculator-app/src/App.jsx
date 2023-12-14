@@ -1,49 +1,3 @@
-<<<<<<< Updated upstream
-import { useState } from 'react'
-
-function App() {
-
-  return (
-    <>
-      <div>
-        <div>
-          <button>AC</button>
-          <button>%</button>
-          <button>/</button>
-          <button>&lt;</button>
-        </div>
-
-        <div>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>+</button>
-        </div>
-
-        <div>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>-</button>
-        </div>
-
-        <div>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>X</button>
-        </div>
-
-        <div>
-          <button></button>
-          <button>0</button>
-          <button>.</button>
-          <button>=</button>
-        </div>
-      </div>
-    </>
-  )
-=======
 import React from 'react';
 import NumberButton from './component/ui/NumberButton';
 import OperatorButton from './component/ui/OperatorButton';
@@ -98,7 +52,6 @@ function App() {
       </div>
     </DefaultLayout>
   );
->>>>>>> Stashed changes
 }
 
 export default App;
