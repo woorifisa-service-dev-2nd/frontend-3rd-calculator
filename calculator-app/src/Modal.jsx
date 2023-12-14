@@ -1,10 +1,12 @@
-function Modal({isOpen,closeModal}) {
-<div>
-            <p>리액트로 모달 구현하기</p>
-            <button className={'modal-close-btn'} onClick={() => setModalOpen(false)}>
-              모달 닫기
-            </button>
-          </div>
+import React from 'react'
+function Modal({isOpen,content, closeModal}) {
+return (
+    <div className={'modal-container'} style={{ display: isOpen ? "block" : "none" }}>
+        <div className="border-2 border-solid border-black bg-blue-500 h-10">{content}
+        <button className={'modal-close-btn'} onClick={closeModal}>Close</button>
+        </div>
+    </div>
+)
 }
 
 export default Modal;

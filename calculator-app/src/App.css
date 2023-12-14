@@ -41,10 +41,15 @@
   color: #888;
 }
 
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
 
 .modal-open-button, .modal-close-btn {
   cursor: pointer;
-  margin-left: auto;
+  margin: auto;
 }
 
 .modal-container {
@@ -61,7 +66,12 @@
 
 .modal-content {
   background-color: #ffffff;
-  width: 250px;
-  height: 150px;
+  width: 500px;
+  height: 400px;
   padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  margin : auto 0;
 }

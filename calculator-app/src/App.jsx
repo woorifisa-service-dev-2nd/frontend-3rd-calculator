@@ -2,34 +2,20 @@ import { useState } from 'react'
 import React, { useRef } from "react";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
-import './Modal'
+import Modal from './Modal'
 
 function App() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const modalBackground = useRef();
-  const [history,setHistory] = useState( {
-    id : 0,
-    content : ''
-  })
 
-  const historyId = useRef(0);
-
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   return (
     <>
-      <div>
-      <button onClick={() => setModalOpen(true)}>
-          history
-        </button>
-        </div>
-        <div ref={modalBackground} onClick={e => {
-          if (e.target === modalBackground.current) {
-            setModalOpen(false);
-          }
-        }
-        }>
-          
-        </div>
+    <div className={'btn-wrapper'}>
+      <button onClick={openModal}>Open Modal</button>
+    </div>
+      <Modal isOpen={isModalOpen} content = "" closeModal={closeModal}/>
     </>
   )
 }
