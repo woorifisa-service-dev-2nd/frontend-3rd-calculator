@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import NumberButton from "./component/ui/NumberButton";
+import OperatorButton from "./component/ui/OperatorButton";
+import DefaultLayout from "./layout/DefaultLayout";
+import CalculateArea from "./component/ui/CalculateArea";
+import InputActionButton from "./component/InputActionButton";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <DefaultLayout>
+      <div className="flex flex-col items-center justify-center h-screen bg-blue-100">
+        <CalculateArea />
+        <div className="grid grid-cols-4 gap-2 w-48">
+          <InputActionButton>AC</InputActionButton>
+
+          <OperatorButton>%</OperatorButton>
+          <OperatorButton>/</OperatorButton>
+          <InputActionButton>{"<"}</InputActionButton>
+
+          <NumberButton>7</NumberButton>
+          <NumberButton>8</NumberButton>
+          <NumberButton>9</NumberButton>
+
+          <OperatorButton onAction={{ type: "clear" }}>+</OperatorButton>
+
+          <NumberButton>4</NumberButton>
+          <NumberButton>5</NumberButton>
+          <NumberButton>6</NumberButton>
+
+          <OperatorButton>-</OperatorButton>
+
+          <NumberButton>1</NumberButton>
+          <NumberButton>2</NumberButton>
+          <NumberButton>3</NumberButton>
+
+          <OperatorButton>x</OperatorButton>
+
+          <OperatorButton>⏱️</OperatorButton>
+
+          <NumberButton>0</NumberButton>
+
+          <OperatorButton>.</OperatorButton>
+          <InputActionButton>=</InputActionButton>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </DefaultLayout>
+  );
 }
 
-export default App
+export default App;
