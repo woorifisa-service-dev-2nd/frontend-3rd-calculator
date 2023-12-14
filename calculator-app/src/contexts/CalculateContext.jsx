@@ -7,38 +7,38 @@ export const CalculateDispatchContext = createContext();
 export const useCalculate = () => useContext(CalculateContext);
 export const useCalculateDispatch = () => useContext(CalculateDispatchContext);
 
-// App.jsx에서 <CalculateProvider> 로 사용
-export const CalculateProvider = ({ childern }) => {
-
-    const [data, dispatch] = useReducer(reducer, '');
-
-    return (
-        <CalculateContext.Provider value={data}>
-            <CalculateDispatchContext.Provider value={dispatch}>
-                {childern}
-            </CalculateDispatchContext.Provider>
-        </CalculateContext.Provider>
-    )
-}
-
 const reducer = (data, action) => {
-
     switch (action.type) {
         case 'INPUT':
+            if(data === '' && action.data === '.') {
+                return '0.';
+            }
             return data + action.data;
 
         case 'REMOVE':
-            if (data.length === 1) {
-                return '';
-            } else {
-                return data.substing(0, data.length-1);
+            if (data.length > 0) {
+                return data.slice(0, data.length - 1);
             }
+            return "";
         
         case 'AC':
-            return 0;
+            return "";
             
         case 'RESULT':
             const resultData = action;
             return resultData;
     }
+}
+
+// App.jsx에서 <CalculateProvider> 로 사용
+export const CalculateProvider = ({ children }) => {
+    const [data, dispatch] = useReducer(reducer, '');
+
+    return (
+        <CalculateContext.Provider value={data}>
+            <CalculateDispatchContext.Provider value={dispatch}>
+                {children}
+            </CalculateDispatchContext.Provider>
+        </CalculateContext.Provider>
+    )
 }

@@ -1,27 +1,35 @@
-import React from "react";
-import NumberButton from "./component/ui/NumberButton";
-import OperatorButton from "./component/ui/OperatorButton";
-import DefaultLayout from "./layout/DefaultLayout";
-import CalculateArea from "./component/ui/CalculateArea";
-import InputActionButton from "./component/InputActionButton";
+import React from 'react';
+import NumberButton from './components/button/NumberButton';
+import OperatorButton from './components/button/OperatorButton';
+import DefaultLayout from './layout/DefaultLayout';
+import CalculateArea from './components/ui/CalculateArea';
+import CalculateButton from './components/button/CalculateButton';
+import { CalculateProvider } from './contexts/CalculateContext';
+import { CalculateResultProvider } from './contexts/CalculateResultContext';
+import CalculateResultArea from './components/ui/CalculateResultArea';
+import InputActionButton from './components/button/InputActionButton';
 
 function App() {
   return (
     <DefaultLayout>
+      <CalculateProvider>
+        <CalculateResultProvider>
       <div className="flex flex-col items-center justify-center h-screen bg-blue-100">
-        <CalculateArea />
-        <div className="grid grid-cols-4 gap-2 w-48">
-          <InputActionButton>AC</InputActionButton>
+      <CalculateArea />
+      <CalculateResultArea />
+        <div className="grid grid-cols-4 gap-2 w-64 h-48">
+
+          <InputActionButton action={{type:"AC"}}>AC</InputActionButton>
 
           <OperatorButton>%</OperatorButton>
           <OperatorButton>/</OperatorButton>
-          <InputActionButton>{"<"}</InputActionButton>
+          <InputActionButton action={{type:"REMOVE"}}>{"<"}</InputActionButton>
 
           <NumberButton>7</NumberButton>
           <NumberButton>8</NumberButton>
           <NumberButton>9</NumberButton>
 
-          <OperatorButton onAction={{ type: "clear" }}>+</OperatorButton>
+          <OperatorButton>+</OperatorButton>
 
           <NumberButton>4</NumberButton>
           <NumberButton>5</NumberButton>
@@ -35,14 +43,17 @@ function App() {
 
           <OperatorButton>x</OperatorButton>
 
-          <OperatorButton>⏱️</OperatorButton>
+          {/* todo: history 버튼 구현 */}
+          <OperatorButton>⏱️</OperatorButton> 
 
           <NumberButton>0</NumberButton>
 
           <OperatorButton>.</OperatorButton>
-          <InputActionButton>=</InputActionButton>
+          <CalculateButton>=</CalculateButton>
         </div>
       </div>
+      </CalculateResultProvider>
+      </CalculateProvider>
     </DefaultLayout>
   );
 }
