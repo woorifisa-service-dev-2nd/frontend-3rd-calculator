@@ -1,10 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const calculateBody = () => {
+  return <div>calculateBody</div>;
+};
 
-  return (
-    <div>calculateBody</div>
-  )
-}
-
-export default calculateBody
+export default calculateBody;

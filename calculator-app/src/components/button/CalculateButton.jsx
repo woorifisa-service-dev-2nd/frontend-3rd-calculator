@@ -1,13 +1,15 @@
-import React from "react";
 import { useCalculateResultDispatch } from "../../contexts/CalculateResultContext";
 import { useCalculate } from "../../contexts/CalculateContext";
+import { useCalculateHistoryDispatch } from "../../contexts/CalculateHistoryContext";
 
 const CalculateButton = ({ children }) => {
-  const dispatch = useCalculateResultDispatch();
   const expression = useCalculate();
+  const dispatch = useCalculateResultDispatch();
+  const historyDispatch = useCalculateHistoryDispatch();
 
   const buttonHandler = () => {
     dispatch({ type: "RESULT", expression });
+    historyDispatch({ type: "APPEND", expression });
   };
 
   return (

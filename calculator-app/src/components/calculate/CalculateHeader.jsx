@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const calculateHeader = () => {
-  return (
-    <div>calculateHeader</div>
-  )
-}
+  return <div>calculateHeader</div>;
+};
 
-export default calculateHeader
+export default calculateHeader;
