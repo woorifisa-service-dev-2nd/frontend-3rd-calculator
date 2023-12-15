@@ -8,9 +8,7 @@ const InputActionButton = ({ children, action }) => {
 
   const buttonHandler = () => {
     dispatch(action);
-    if (action.type === "AC") {
-      resultDispatch(action);
-    }
+    resultDispatch({ type: "AC" });
   };
 
   return (
