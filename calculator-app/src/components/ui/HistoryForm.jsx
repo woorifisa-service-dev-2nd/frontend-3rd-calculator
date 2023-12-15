@@ -6,7 +6,7 @@ const HistoryForm = ({ onClick }) => {
   const histories = useCalculateHistory();
 
   return (
-    <div>
+    <div className="h-96 overflow-y-scroll">
       {histories.map((history, index) => (
         <CalculateResultItem
           key={index}
