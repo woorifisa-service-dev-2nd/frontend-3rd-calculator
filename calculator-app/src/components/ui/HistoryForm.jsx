@@ -1,17 +1,21 @@
-import React from 'react'
-import { useCalculateHistory } from '../../contexts/CalculateHistoryContext'
-import CalculateResultItem from './CalculateResultItem';
+import React from "react";
+import { useCalculateHistory } from "../../contexts/CalculateHistoryContext";
+import CalculateResultItem from "./CalculateResultItem";
 
-const HistoryForm = ({onClick}) => {
-
-    const histories = useCalculateHistory();
+const HistoryForm = ({ onClick }) => {
+  const histories = useCalculateHistory();
 
   return (
     <div>
-        {histories.map((history, index) => 
-        <CalculateResultItem key={index} history={history} onClick={onClick}></CalculateResultItem>)}
+      {histories.map((history, index) => (
+        <CalculateResultItem
+          key={index}
+          history={history}
+          onClick={onClick}
+        ></CalculateResultItem>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default HistoryForm
+export default HistoryForm;
