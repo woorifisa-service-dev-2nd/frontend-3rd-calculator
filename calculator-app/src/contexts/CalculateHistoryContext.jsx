@@ -11,9 +11,13 @@ export const useCalculateHistoryDispatch = () =>
 const reducer = (history, action) => {
   switch (action.type) {
     case "APPEND":
-      const expression = action.expression;
-      const result = evaluateExpression(expression);
-      history.push({ expression, result });
+      try {
+        const expression = action.expression;
+        const result = evaluateExpression(expression);
+        history.push({ expression, result });
+      } catch (error) {
+        console.error(error);
+      }
       return history;
   }
 };

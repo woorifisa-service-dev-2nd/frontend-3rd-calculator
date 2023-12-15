@@ -13,7 +13,11 @@ const reducer = (data, action) => {
     case "AC":
       return "";
     case "RESULT":
-      return evaluateExpression(action.expression);
+      try {
+        return evaluateExpression(action.expression);
+      } catch (error) {
+        return error.message;
+      }
     case "HISTORY":
       return action.result;
   }

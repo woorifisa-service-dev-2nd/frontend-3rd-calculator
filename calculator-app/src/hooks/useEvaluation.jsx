@@ -6,7 +6,9 @@ const splitExpression = (expression) => {
   let tmp = "";
   for (const char of expression) {
     if (Object.keys(MARKS).includes(char)) {
-      splitResult.push(tmp);
+      if (tmp !== "") {
+        splitResult.push(tmp);
+      }
       splitResult.push(char);
       tmp = "";
     } else {
@@ -54,8 +56,14 @@ const evaluateWithMark = (left, right, mark) => {
     case "X":
       return left * right;
     case "/":
+      if (right === 0) {
+        throw new Error("0으로 나눌 수 없습니다");
+      }
       return left / right;
     case "%":
+      if (right === 0) {
+        throw new Error("0으로 나머지 연산을 할 수 없습니다");
+      }
       return left % right;
     case "+":
       return left + right;
@@ -73,6 +81,9 @@ export const evaluateExpression = (expression) => {
     if (Object.keys(MARKS).includes(element)) {
       const right = numberStack.pop();
       const left = numberStack.pop();
+      if (right === undefined || left === undefined) {
+        throw new Error("연산자의 개수가 너무 많습니다");
+      }
       numberStack.push(evaluateWithMark(left, right, element));
     } else {
       numberStack.push(Number(element));
@@ -80,6 +91,10 @@ export const evaluateExpression = (expression) => {
   }
 
   const evaluateResult = numberStack.pop();
+
+  if (isNaN(evaluateResult)) {
+    throw new Error("잘못된 수식입니다");
+  }
 
   return evaluateResult;
 };
